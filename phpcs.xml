@@ -53,5 +53,6 @@
 	</rule>
 
 	<rule ref="Security">
+		<exclude name="PHPCS_SecurityAudit.Misc.IncludeMismatch.ErrMiscIncludeMismatchNoExt"/>
 	</rule>
 </ruleset>
