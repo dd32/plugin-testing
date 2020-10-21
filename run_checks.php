@@ -14,7 +14,7 @@ echo '::warning::' .
 	"Trac: https://plugins.trac.wordpress.org/browser/$slug/" . ( $version && 'trunk' != $version ? 'tags/' : '' ) . $version .
 	"\n";
 
-// Run PHP CS PHPCompatibility checks.
+// Run PHP CS checks.
 $output = []; // Clear it.
 exec( ( file_exists( 'vendor/bin/phpcs' ) ? 'vendor/bin/phpcs' : 'phpcs' ) . " -s --basepath=$slug/$slug $slug", $output, $returnval );
 echo implode( "\n", $output );
