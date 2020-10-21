@@ -34,6 +34,7 @@
 		<exclude name="WordPress.PHP.DontExtract"/>
 		<!-- ini_set() isn't a vulnerability in of itself, just bad code. -->
 		<exclude name="WordPress.PHP.IniSet"/>
+		<exclude name="WordPress.PHP.TypeCasts.DoubleRealFound"/>
 		<exclude name="WordPress.PHP.YodaConditions"/>
 	</rule>
 
