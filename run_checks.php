@@ -40,6 +40,9 @@ if ( $returnval > 0 ) {
 	// Strip color/bolding in output. We want the highlighting usually, just not here.
 	$output = preg_replace('/\e[[][A-Za-z0-9];?[0-9]*m?/', '', $output );
 
+	// Add trac links..
+	$output = preg_replace( '/FILE: (.+?)$/', 'FILE: $1%0ATRAC: https://plugins.trac.wordpress.org/browser/' . $slug . '/trunk/$1', $output );
+
 	// Remove the last two lines, they're the errata after the test.
 	$output = array_slice( $output, 0, -2 );
 
