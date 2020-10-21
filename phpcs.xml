@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PHP_CodeSniffer" xsi:noNamespaceSchemaLocation="phpcs.xsd">
+	<description>Custom plugin testing ruleset</description>
+
+	<config name="installed_paths" value="vendor/PHPCompatibility/PHPCompatibility,vendor/phpcsstandards/phpcsutils" />
+
+	<!-- exclude all polyfills from testing -->
+	<exclude-pattern>polyfill</exclude-pattern>
+	<!-- PHPSecLib uses multitude of libraries, including deprecated mcrypt. Lets skip it. -->
+	<exclude-pattern>phpseclib</exclude-pattern>
+	<!-- sodium_compat uses deprecated functions/constants, skip it. -->
+	<exclude-pattern>sodium_compat</exclude-pattern>
+
+	<!-- Only check .php files, avoids PHPCS issues with CSS/JS files. -->
+	<arg name="extensions" value="php"/>
+
+	<arg name="basepath" value="."/>
+	<arg name="colors"/>
+	<arg name="parallel" value="75"/>
+	<arg value="np"/>
+
+</ruleset>

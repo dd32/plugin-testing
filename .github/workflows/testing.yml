@@ -1,0 +1,32 @@
+name: Plugin Checks
+
+on: repository_dispatch
+
+jobs:
+  run_checks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup PHP & Composer
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        tools: composer
+    - name: Setup Environment
+      run: |
+        composer install --no-dev
+        php --version
+    - name: Checkout Plugin
+      run: |
+        mkdir -p $SLUG
+        if [ -z "$VERSION" ]; then VERSION="latest-stable"; fi
+        ZIP="https://downloads.wordpress.org/plugin/$SLUG.$VERSION.zip?nostats=1"
+        echo Downloading $ZIP..
+        curl "$ZIP" -so $SLUG.zip
+        unzip -q $SLUG.zip -d $SLUG
+        rm -f $SLUG.zip
+      env:
+          SLUG: "${{ github.event.client_payload.slug }}"
+          VERSION: "${{ github.event.client_payload.version }}"
+    - name: Run Plugin Checks
+      run: ./run_checks.php "${{ github.event.client_payload.slug }}" "${{ github.event.client_payload.version }}"

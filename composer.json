@@ -1,0 +1,7 @@
+{
+    "require": {
+        "squizlabs/php_codesniffer": "*",
+        "phpcsstandards/phpcsutils": "1.x-dev",
+        "symfony/polyfill-php80": "^1.18"
+    }
+}
