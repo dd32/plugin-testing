@@ -3,6 +3,7 @@
         "squizlabs/php_codesniffer": "*",
         "phpcsstandards/phpcsutils": "1.x-dev",
         "symfony/polyfill-php80": "^1.18",
-        "wp-coding-standards/wpcs": "^2.3"
+        "wp-coding-standards/wpcs": "^2.3",
+        "pheromone/phpcs-security-audit": "^2.0"
     }
 }
