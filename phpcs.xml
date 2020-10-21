@@ -2,7 +2,7 @@
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PHP_CodeSniffer" xsi:noNamespaceSchemaLocation="phpcs.xsd">
 	<description>Custom plugin testing ruleset</description>
 
-	<config name="installed_paths" value="vendor/wp-coding-standards/wpcs,vendor/pheromone/phpcs-security-audit/Security" />
+	<config name="installed_paths" value="vendor/wp-coding-standards/wpcs" />
 
 	<!-- exclude all polyfills from testing -->
 	<exclude-pattern>polyfill</exclude-pattern>
@@ -55,10 +55,4 @@
 		<exclude name="WordPress.Security.NonceVerification.Missing"/>
 	</rule>
 
-	<rule ref="Security">
-		<exclude name="PHPCS_SecurityAudit.Misc.IncludeMismatch.ErrMiscIncludeMismatchNoExt"/>
-
-		<!-- This doesn't check for which param is the callback.. -->
-		<exclude name="PHPCS_SecurityAudit.BadFunctions.CallbackFunctions.ErrCallbackFunctions"/>
-	</rule>
 </ruleset>
