@@ -19,31 +19,32 @@
 	<arg name="parallel" value="75"/>
 	<arg value="np"/>
 
-	<!-- borrowed from https://gist.github.com/mcguffin/255909d4d7fcc241fe63363012553268 -->
-	<!-- Include the WordPress ruleset, with exclusions. -->
+	<!-- Based on https://gist.github.com/mcguffin/255909d4d7fcc241fe63363012553268 initially. -->
 	<rule ref="WordPress.CodeAnalysis">
 	</rule>
 	<rule ref="WordPress.DB">
 	</rule>
-	<rule ref="WordPress.NamingConventions.PrefixAllGlobals"/>
+
 	<rule ref="WordPress.PHP">
 		<!-- omit non security sniffs -->
 		<exclude name="WordPress.PHP.DisallowShortTernary"/>
 		<exclude name="WordPress.PHP.DontExtract"/>
 		<exclude name="WordPress.PHP.YodaConditions"/>
 	</rule>
+
 	<rule ref="WordPress.Security">
-	</rule>
-	<rule ref="WordPress.Utils">
-	</rule>
+		<!-- Unescaped output is bad, but almost impossible to test for correctly -->
+		<exclude name="WordPress.Security.EscapeOutput.OutputNotEscaped"/>
 
-	<rule ref="WordPress.WP">
-		<exclude name="WordPress.WP.TimezoneChange"/>
-		<exclude name="WordPress.WP.I18n.MixedOrderedPlaceholders"/>
-		<exclude name="WordPress.WP.I18n.UnorderedPlaceholders"/>
-		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralText"/>
+		<!-- lack of wp_unslash() isn't critical, it's probably simply checking non-slashable chars. -->
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash"/>
 
-		<exclude name="WordPress.WP.DeprecatedParameters"/>
+		<!-- Ignore unsanitized/unchecked $_SERVER / $_POST / etc var access. -->
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidated"/>
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized"/>
+
+		<!-- Ignore lack of nonce checks, there's a range of reasons why this can happen and not all are security related. -->
+		<exclude name="WordPress.Security.NonceVerification.Missing"/>
 	</rule>
 
 </ruleset>
