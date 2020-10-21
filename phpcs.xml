@@ -56,5 +56,8 @@
 
 	<rule ref="Security">
 		<exclude name="PHPCS_SecurityAudit.Misc.IncludeMismatch.ErrMiscIncludeMismatchNoExt"/>
+
+		<!-- This doesn't check for which param is the callback.. -->
+		<exclude name="PHPCS_SecurityAudit.BadFunctions.CallbackFunctions.ErrCallbackFunctions"/>
 	</rule>
 </ruleset>
