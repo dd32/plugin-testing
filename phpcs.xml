@@ -29,6 +29,7 @@
 		<!-- omit non security sniffs -->
 		<exclude name="WordPress.PHP.DisallowShortTernary"/>
 		<exclude name="WordPress.PHP.DontExtract"/>
+		<exclude name="WordPress.PHP.IniSet.display_errors_Blacklisted"/>
 		<exclude name="WordPress.PHP.YodaConditions"/>
 	</rule>
 
@@ -36,12 +37,16 @@
 		<!-- Unescaped output is bad, but almost impossible to test for correctly -->
 		<exclude name="WordPress.Security.EscapeOutput.OutputNotEscaped"/>
 
+		<!-- _e() is not insecure -->
+		<exclude name="WordPress.Security.EscapeOutput.UnsafePrintingFunction"/>
+
 		<!-- lack of wp_unslash() isn't critical, it's probably simply checking non-slashable chars. -->
 		<exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash"/>
 
 		<!-- Ignore unsanitized/unchecked $_SERVER / $_POST / etc var access. -->
 		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidated"/>
 		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized"/>
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidatedNotSanitized"/>
 
 		<!-- Ignore lack of nonce checks, there's a range of reasons why this can happen and not all are security related. -->
 		<exclude name="WordPress.Security.NonceVerification.Missing"/>
