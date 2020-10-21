@@ -23,6 +23,8 @@
 	<rule ref="WordPress.CodeAnalysis">
 	</rule>
 	<rule ref="WordPress.DB">
+		<!-- using "%s" quoted in a prepare is not needed, but is not a security issue. -->
+		<exclude name="WordPress.DB.PreparedSQLPlaceholders.QuotedSimplePlaceholder"/>
 	</rule>
 
 	<rule ref="WordPress.PHP">
