@@ -2,7 +2,7 @@
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PHP_CodeSniffer" xsi:noNamespaceSchemaLocation="phpcs.xsd">
 	<description>Custom plugin testing ruleset</description>
 
-	<config name="installed_paths" value="vendor/PHPCompatibility/PHPCompatibility,vendor/phpcsstandards/phpcsutils" />
+	<config name="installed_paths" value="vendor/wp-coding-standards/wpcs,vendor/phpcsstandards/phpcsutils" />
 
 	<!-- exclude all polyfills from testing -->
 	<exclude-pattern>polyfill</exclude-pattern>
@@ -18,5 +18,30 @@
 	<arg name="colors"/>
 	<arg name="parallel" value="75"/>
 	<arg value="np"/>
+
+	<!-- borrowed from https://gist.github.com/mcguffin/255909d4d7fcc241fe63363012553268 -->
+	<!-- Include the WordPress ruleset, with exclusions. -->
+	<rule ref="WordPress.CodeAnalysis">
+	</rule>
+	<rule ref="WordPress.DB">
+	</rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals"/>
+	<rule ref="WordPress.PHP">
+		<!-- omit non security sniffs -->
+		<exclude name="WordPress.PHP.DisallowShortTernary"/>
+		<exclude name="WordPress.PHP.DontExtract"/>
+		<exclude name="WordPress.PHP.YodaConditions"/>
+	</rule>
+	<rule ref="WordPress.Security">
+	</rule>
+	<rule ref="WordPress.Utils">
+	</rule>
+
+	<rule ref="WordPress.WP">
+		<exclude name="WordPress.WP.TimezoneChange"/>
+		<exclude name="WordPress.WP.I18n.MixedOrderedPlaceholders"/>
+		<exclude name="WordPress.WP.I18n.UnorderedPlaceholders"/>
+		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralText"/>
+	</rule>
 
 </ruleset>
