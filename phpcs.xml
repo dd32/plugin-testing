@@ -31,7 +31,8 @@
 		<!-- omit non security sniffs -->
 		<exclude name="WordPress.PHP.DisallowShortTernary"/>
 		<exclude name="WordPress.PHP.DontExtract"/>
-		<exclude name="WordPress.PHP.IniSet.display_errors_Blacklisted"/>
+		<!-- ini_set() isn't a vulnerability in of itself, just bad code. -->
+		<exclude name="WordPress.PHP.IniSet"/>
 		<exclude name="WordPress.PHP.YodaConditions"/>
 	</rule>
 
