@@ -18,6 +18,7 @@
 	<arg name="colors"/>
 	<arg name="parallel" value="75"/>
 	<arg value="np"/>
+	<arg name="report-width" value="120"/>
 
 	<!-- Based on https://gist.github.com/mcguffin/255909d4d7fcc241fe63363012553268 initially. -->
 	<rule ref="WordPress.CodeAnalysis">
