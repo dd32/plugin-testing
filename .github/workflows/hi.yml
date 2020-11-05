@@ -3,9 +3,9 @@
 name: Hey DD32 Your Rock EH!
 
   push:
-    branches: [ trunk ]
+    branches: [ master ]
   pull_request:
-    branches: [ trunk ]
+    branches: [ master ]
 
 jobs:
   build:
